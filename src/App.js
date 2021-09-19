@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import ContainerContextPoke from 'context/ContextPoke'
+import ContainerContextFavorite from 'context/ContextFavorite'
+import ContainerContextAuth from 'context/ContextAuth'
+
+import Route from 'routes/Routes'
+
+import Layout from 'components/Common/Layout'
+
+import GlobalStyle from 'styles/GlobalStyles'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ContainerContextAuth>
+      <ContainerContextPoke>
+        <ContainerContextFavorite>
+          <Layout>
+            <GlobalStyle/>
+            <Route/>
+          </Layout>
+        </ContainerContextFavorite>
+      </ContainerContextPoke>
+    </ContainerContextAuth>
+  )
 }
 
-export default App;
+export default App
